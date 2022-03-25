@@ -1,0 +1,54 @@
+{
+  "name": "movies-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app/index.js",
+    "dev": "nodemon --exec babel-node app/index.js",
+    "test": "cross-env NODE_ENV=test nyc --require @babel/register --reporter=lcov --reporter=text --reporter=text-summary mocha test/** --exit --timeout=15000",
+    "lint": "eslint . --ext .js ./",
+    "lint-fix": "eslint . --ext .js ./ --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lawrecks/movies-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lawrecks/movies-api/issues"
+  },
+  "homepage": "https://github.com/lawrecks/movies-api#readme",
+  "dependencies": {
+    "app-root-path": "^3.0.0",
+    "body-parser": "^1.19.0",
+    "chai": "^4.3.4",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.3",
+    "helmet": "^5.0.2",
+    "joi": "^17.6.0",
+    "mocha": "^9.2.2",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.15",
+    "nyc": "^15.1.0",
+    "supertest": "^2.0.1",
+    "winston": "^3.6.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.5",
+    "@babel/eslint-parser": "^7.16.5",
+    "@babel/node": "^7.16.7",
+    "@babel/plugin-transform-runtime": "^7.13.15",
+    "@babel/register": "^7.17.0",
+    "@babel/preset-env": "^7.13.15",
+    "prettier": "^2.6.0",
+    "eslint": "^7.24.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-prettier": "^3.4.1"
+  }
+}
