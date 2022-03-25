@@ -1,0 +1,7 @@
+/coverage/**
+/docs/**
+/test/**
+/tmp/**
+!.eslintrc.json
+/dist
+/config
