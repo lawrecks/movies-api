@@ -14,7 +14,7 @@ const pickMovieDetails = ({ Title, Released, Genre, Director }) => ({
   Director,
 });
 
-const fetchAndCreateMovie = async (title, user) => {
+export const fetchAndCreateMovie = async (title, user) => {
   const { status, data: result } = await sendHttpRequest(
     `https://www.omdbapi.com/?t=${title}&apikey=${config.OMDB_API_KEY}`,
     'GET',
@@ -36,4 +36,4 @@ const fetchAndCreateMovie = async (title, user) => {
   return movie;
 };
 
-export default fetchAndCreateMovie;
+export const getMovies = async (userId) => db.any(movieQueries.getMoviesByUserId, userId);

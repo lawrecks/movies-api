@@ -1,10 +1,10 @@
-import fetchAndCreateMovie from '../services/movie.service';
+import * as service from '../services/movie.service';
 import { successResponse } from '../utils/helpers/response.helpers';
 
-const createMovie = async (req, res, next) => {
+export const createMovie = async (req, res, next) => {
   try {
     const { title } = req.body;
-    const movie = await fetchAndCreateMovie(title, req.decoded);
+    const movie = await service.fetchAndCreateMovie(title, req.decoded);
     const message = 'Movie created successfully';
     successResponse(res, message, 201, movie);
   } catch (error) {
@@ -14,4 +14,15 @@ const createMovie = async (req, res, next) => {
   }
 };
 
-export default createMovie;
+export const fetchMovies = async (req, res, next) => {
+  try {
+    const { userId } = req.params;
+    const movies = await service.getMovies(userId);
+    const message = 'Movies fetched successfully';
+    successResponse(res, message, 200, movies);
+  } catch (error) {
+    // eslint-disable-next-line no-undef
+    logger.error('fetchMovies::authController', error);
+    next(error);
+  }
+};
