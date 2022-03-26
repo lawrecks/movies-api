@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node app/index.js",
+    "start": "node --require @babel/register ./app/index.js",
+    "prestart": "npm run migrate:up",
     "dev": "nodemon --exec babel-node app/index.js",
     "test": "cross-env NODE_ENV=test nyc --require @babel/register --reporter=lcov --reporter=text --reporter=text-summary mocha test/** --exit --timeout=15000",
     "pretest": "npm run migrate-test:down && npm run migrate-test:up",
