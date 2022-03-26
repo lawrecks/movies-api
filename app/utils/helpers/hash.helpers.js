@@ -9,4 +9,11 @@ const decodeToken = (token) => {
   }
 };
 
+// eslint-disable-next-line arrow-body-style
+export const generateToken = async (payload) => {
+  return jwt.sign(payload, config.JWT_SECRET, {
+    expiresIn: '2h',
+  });
+};
+
 export default decodeToken;

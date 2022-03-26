@@ -4,6 +4,19 @@ import nock from 'nock';
 import app from '../../app';
 import config from '../../app/config';
 import movieMockResponse from '../mocks/movie.mock.json';
+import { generateToken } from '../../app/utils/helpers/hash.helpers';
+
+// Generate token for test
+let token = '';
+generateToken({
+  userId: 123,
+  name: 'Basic Thomas',
+  role: 'basic',
+  iss: 'https://www.netguru.com/',
+  sub: '123',
+}).then((result) => {
+  token = result;
+});
 
 describe('Movie API', () => {
   describe('Create movie', () => {
@@ -15,7 +28,7 @@ describe('Movie API', () => {
       request(app)
         .post('/api/v1/movie')
         .set('Accept', 'application/json')
-        .set('Authorization', `Bearer ${process.env.BASIC_USER_TOKEN}`)
+        .set('Authorization', `Bearer ${token}`)
         .send({
           title: 'iron man',
         })
@@ -36,7 +49,7 @@ describe('Movie API', () => {
       request(app)
         .post('/api/v1/movie')
         .set('Accept', 'application/json')
-        .set('Authorization', `Bearer ${process.env.BASIC_USER_TOKEN}`)
+        .set('Authorization', `Bearer ${token}`)
         .send({
           title: 'iron man',
         })
@@ -52,7 +65,7 @@ describe('Movie API', () => {
       request(app)
         .post('/api/v1/movie')
         .set('Accept', 'application/json')
-        .set('Authorization', `Bearer ${process.env.BASIC_USER_TOKEN}`)
+        .set('Authorization', `Bearer ${token}`)
         .send({})
         .end((req, res) => {
           expect(res.statusCode).to.be.equal(400);
@@ -66,7 +79,7 @@ describe('Movie API', () => {
       request(app)
         .post('/api/v1/movie')
         .set('Accept', 'application/json')
-        .set('Authorization', `Bearer ${process.env.BASIC_USER_TOKEN}s`)
+        .set('Authorization', `Bearer ${token}s`)
         .send({})
         .end((req, res) => {
           expect(res.statusCode).to.be.equal(401);
