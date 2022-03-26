@@ -1,11 +1,16 @@
 import Joi from 'joi';
 import baseValidator from '.';
 
-const validateCreateBody = (req, res, next) => {
+export const validateCreateBody = (req, res, next) => {
   const schema = Joi.object({
     title: Joi.string().required(),
   });
   baseValidator(schema, req, res, next, 'body');
 };
 
-export default validateCreateBody;
+export const validateFetchParams = (req, res, next) => {
+  const schema = Joi.object({
+    userId: Joi.number().integer().positive(),
+  });
+  baseValidator(schema, req, res, next, 'params');
+};

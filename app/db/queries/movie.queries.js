@@ -17,9 +17,22 @@ export default {
   `,
 
   getUserCreatedMovies: `
-  SELECT count(*)
-  FROM movies
-  WHERE extract(YEAR FROM created_at) = extract(YEAR FROM now())
-        AND extract(MONTH FROM created_at) = extract(MONTH FROM now()) AND user_id = $1;
+    SELECT
+      count(*)
+    FROM movies
+    WHERE extract(YEAR FROM created_at) = extract(YEAR FROM now())
+          AND extract(MONTH FROM created_at) = extract(MONTH FROM now()) AND user_id = $1;
+  `,
+
+  getMoviesByUserId: `
+    SELECT
+        id,
+        user_id,
+        title,
+        release_date as released,
+        genre,
+        director
+    FROM movies
+    WHERE user_id = $1
   `,
 };

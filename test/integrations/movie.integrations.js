@@ -89,4 +89,46 @@ describe('Movie API', () => {
         });
     });
   });
+
+  describe('Fetch movies', () => {
+    it('should fetch movies successfully', (done) => {
+      request(app)
+        .get('/api/v1/movie/123')
+        .set('Accept', 'application/json')
+        .set('Authorization', `Bearer ${token}`)
+        .end((req, res) => {
+          expect(res.statusCode).to.be.equal(200);
+          expect(res.body.code).to.be.equal(200);
+          expect(res.body.status).to.be.equal('success');
+          expect(res.body.message).to.be.equal('Movies fetched successfully');
+          done();
+        });
+    });
+
+    it('should not fetch movies for unauthorized user', (done) => {
+      request(app)
+        .get('/api/v1/movie/123')
+        .set('Accept', 'application/json')
+        .set('Authorization', `Bearer ${token}s`)
+        .end((req, res) => {
+          expect(res.statusCode).to.be.equal(401);
+          expect(res.body.code).to.be.equal(401);
+          expect(res.body.status).to.be.equal('error');
+          done();
+        });
+    });
+
+    it('should throw error for ID of string type', (done) => {
+      request(app)
+        .get('/api/v1/movie/1a')
+        .set('Accept', 'application/json')
+        .set('Authorization', `Bearer ${token}`)
+        .end((req, res) => {
+          expect(res.statusCode).to.be.equal(400);
+          expect(res.body.code).to.be.equal(400);
+          expect(res.body.status).to.be.equal('error');
+          done();
+        });
+    });
+  })
 });

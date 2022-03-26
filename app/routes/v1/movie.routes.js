@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import verifyToken, { canAccess } from '../../middlewares/auth.middlewares';
-import createMovie from '../../controllers/movie.controllers';
-import validateCreateBody from '../../validators/movie.validators';
+import * as controller from '../../controllers/movie.controllers';
+import * as validator from '../../validators/movie.validators';
 import checkCreateLimit from '../../middlewares/movie.middlewares';
 
 const router = Router();
@@ -10,9 +10,17 @@ router.post(
   '/',
   verifyToken,
   canAccess('all'),
-  validateCreateBody,
+  validator.validateCreateBody,
   checkCreateLimit,
-  createMovie,
+  controller.createMovie,
+);
+
+router.get(
+  '/:userId',
+  verifyToken,
+  canAccess('all'),
+  validator.validateFetchParams,
+  controller.fetchMovies,
 );
 
 export default router;
