@@ -6,7 +6,7 @@ import production from './production';
 const { PORT, NODE_ENV, JWT_SECRET } = process.env;
 
 // Define required environmental variables
-const requiredEnvs = ['JWT_SECRET', 'OMDB_API_KEY', 'AUTH_SERVICE_BASE_URL'];
+const requiredEnvs = ['JWT_SECRET', 'OMDB_API_KEY'];
 
 // Throw error if required variable is not defined
 requiredEnvs.forEach((item) => {
