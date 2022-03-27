@@ -5,7 +5,7 @@ WORKDIR /app
 COPY ./package.json ./package-lock.json ./app/
 RUN npm install
 
-RUN mkdir ./src
-COPY ./app ./src
+RUN mkdir ./app
+COPY ./app ./app
 
 CMD ["npm", "start"]
