@@ -57,6 +57,9 @@ You will need Node.js (version 14 and above) and a node global package installed
 - Create a file named `.env` in the project root directory
 - Add the environment variables as described in the `.env.example` file
 
+## Install dependencies
+    $ npm install
+
 ## Run with Docker
 
 ### Prerequisites
@@ -74,9 +77,6 @@ To stop the app, run
     $ docker-compose down
     
 ## Run with NPM
-
-### Install dependencies
-    $ npm install
 
 ### Running this project locally
     $ npm run dev
