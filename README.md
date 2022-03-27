@@ -66,9 +66,7 @@ You need to have `docker` and `docker-compose` installed on your computer to run
 Run the app with following command
 
     $ JWT_SECRET=secret docker-compose up -d
-    
-By default the app will start on port `1918`
-    
+        
 To stop the app, run
     
     $ docker-compose down
