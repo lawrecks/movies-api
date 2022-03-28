@@ -90,6 +90,9 @@ To stop the app, run
 
 Postman: https://documenter.getpostman.com/view/10148336/UVyn2JwS
 
+## Database Schema
+
+https://dbdiagram.io/d/62415a91bed61838730be234
 
 ## Show your support
 
