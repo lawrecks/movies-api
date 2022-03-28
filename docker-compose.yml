@@ -22,3 +22,4 @@ services:
     environment:
       JWT_SECRET: ${JWT_SECRET}
       DATABASE_DEV_URL: postgres://${POSTGRES_USERNAME}:${POSTGRES_PASSWORD}@db:5432/movies_db
+      OMDB_API_KEY: ${OMDB_API_KEY}
