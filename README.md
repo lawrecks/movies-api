@@ -68,7 +68,8 @@ You need to have `docker` and `docker-compose` installed on your computer to run
 
 Run the app with following command
 
-    $ JWT_SECRET=secret docker-compose up -d
+    $ JWT_SECRET=secret OMDB_API_KEY=your_omdb_api_key docker-compose up -d
+You can obtain your API KEY at https://omdbapi.com/apikey.aspx
     
 By default, the app should run on port `1918`
         
